@@ -1,0 +1,63 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kapp.k14s.io/identity: v1;build-service-gateway/extensions/Ingress/build-service-gateway;extensions/v1beta1
+    kapp.k14s.io/original: |
+      apiVersion: extensions/v1beta1
+      kind: Ingress
+      metadata:
+        annotations:
+          kubernetes.io/ingress.class: contour
+        labels:
+          app.kubernetes.io/instance: build-service-gateway
+          app.kubernetes.io/name: build-service
+          kapp.k14s.io/app: "1584565507300713682"
+          kapp.k14s.io/association: v1.74775b51338bc0b875bbdc117246a630
+        name: build-service-gateway
+        namespace: build-service-gateway
+      spec:
+        rules:
+        - host: pbs.lab.digitalkloud.com
+          http:
+            paths:
+            - backend:
+                serviceName: build-service-gateway
+                servicePort: http
+              path: /
+        tls:
+        - hosts:
+          - pbs.lab.digitalkloud.com
+          secretName: build-service-certificate
+    kapp.k14s.io/original-diff: |
+      []
+    kapp.k14s.io/original-diff-full: ""
+    kapp.k14s.io/original-diff-md5: 58e0494c51d30eb3494f7c9198986bb9
+    kubernetes.io/ingress.class: contour
+  creationTimestamp: "2020-03-19T03:57:37Z"
+  generation: 1
+  labels:
+    app.kubernetes.io/instance: build-service-gateway
+    app.kubernetes.io/name: build-service
+    kapp.k14s.io/app: "1584565507300713682"
+    kapp.k14s.io/association: v1.74775b51338bc0b875bbdc117246a630
+  name: build-service-gateway
+  namespace: build-service-gateway
+  resourceVersion: "53847"
+  selfLink: /apis/extensions/v1beta1/namespaces/build-service-gateway/ingresses/build-service-gateway
+  uid: f58df85c-2d62-4f6c-80cd-573e769b6807
+spec:
+  rules:
+  - host: pbs.lab.digitalkloud.com
+    http:
+      paths:
+      - backend:
+          serviceName: build-service-gateway
+          servicePort: http
+        path: /
+  tls:
+  - hosts:
+    - pbs.lab.digitalkloud.com
+    secretName: build-service-certificate
+status:
+  loadBalancer: {}

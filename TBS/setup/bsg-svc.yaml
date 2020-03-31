@@ -1,0 +1,66 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    kapp.k14s.io/identity: v1;build-service-gateway//Service/build-service-gateway;v1
+    kapp.k14s.io/original: |
+      apiVersion: v1
+      kind: Service
+      metadata:
+        labels:
+          app.kubernetes.io/instance: build-service-gateway
+          app.kubernetes.io/name: build-service
+          kapp.k14s.io/app: "1584565507300713682"
+          kapp.k14s.io/association: v1.0f32840a016a612f3993ae50048cc30a
+        name: build-service-gateway
+        namespace: build-service-gateway
+      spec:
+        ports:
+        - name: http
+          port: 80
+          protocol: TCP
+          targetPort: http
+        selector:
+          app.kubernetes.io/instance: build-service-gateway
+          app.kubernetes.io/name: build-service
+          kapp.k14s.io/app: "1584565507300713682"
+        type: ClusterIP
+    kapp.k14s.io/original-diff: |
+      - type: test
+        path: /metadata/annotations
+        value: {}
+      - type: remove
+        path: /metadata/annotations
+      - type: test
+        path: /spec/sessionAffinity
+        value: None
+      - type: remove
+        path: /spec/sessionAffinity
+    kapp.k14s.io/original-diff-full: ""
+    kapp.k14s.io/original-diff-md5: 266ea81a10e6d1266f87f3c53d4fd863
+  creationTimestamp: "2020-03-19T03:57:37Z"
+  labels:
+    app.kubernetes.io/instance: build-service-gateway
+    app.kubernetes.io/name: build-service
+    kapp.k14s.io/app: "1584565507300713682"
+    kapp.k14s.io/association: v1.0f32840a016a612f3993ae50048cc30a
+  name: build-service-gateway
+  namespace: build-service-gateway
+  resourceVersion: "53855"
+  selfLink: /api/v1/namespaces/build-service-gateway/services/build-service-gateway
+  uid: 0a259cc7-3860-49cc-880d-ee0cd0eef885
+spec:
+  clusterIP: 10.100.200.73
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: http
+  selector:
+    app.kubernetes.io/instance: build-service-gateway
+    app.kubernetes.io/name: build-service
+    kapp.k14s.io/app: "1584565507300713682"
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}
